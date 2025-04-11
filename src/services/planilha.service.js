@@ -1,4 +1,3 @@
-// src/services/excel.service.js
 const ExcelJS = require('exceljs')
 
 async function generateExcel({ dados, columns }) {
