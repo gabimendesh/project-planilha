@@ -62,3 +62,7 @@ Este projeto tem como objetivo gerar arquivos Excel (.xlsx), utilizando Node.js 
 ## 🧪 Documentação da API (Swagger)
 
 - [ ] 📎Criar a documentação no swagger
+
+## 🛜 Deploy da API
+
+- [ ] Fazer o deploy da API e disponibilizá-la em uma url
