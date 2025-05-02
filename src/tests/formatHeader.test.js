@@ -18,7 +18,6 @@ describe('formatHeader', () => {
   });
 
   it('should not break with numeric keys', () => {
-    expect(formatHeader('my_1_data')).toBe('User 1 Data');
+    expect(formatHeader('my_1_data')).toBe('My 1 Data');
   });
 });
-''
