@@ -25,7 +25,11 @@ Este projeto tem como objetivo gerar arquivos Excel (.xlsx), utilizando Node.js 
 ### 📁 Suporte a Novos Formatos
 
 - Adicionar opções de exportação
+- [ ] Exportar como `.xlsx` (já implementado)
 - [ ] Exportar como `.csv`
+  - Adicionar nova rota para exportação em `.csv`
+  - Reutilizar `formatUsers` para gerar os dados
+  - Definir `Content-Type: text/csv` e `Content-Disposition` para download
 - [ ] Exportar como `.pdf`
 
 ### 🎨 Estilo e Layout da Planilha (se possível)
