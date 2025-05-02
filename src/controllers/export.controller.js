@@ -1,11 +1,23 @@
-const { clients, columns } = require('../mocks/planilha_clientes')
-const { generateExcel } = require('../services/planilha.service')
+const { generateExcel } = require('../services/planilha.service');
+const { getUsers } = require('../services/user.service');
+const formatHeader = require('../utils/formatHeader');
 
 exports.exportarClientes = async (req, res) => {
+  const users = await getUsers();
 
-  const excelBuffer = await generateExcel({ dados: clients, columns })
+  const columns = Object.keys(users[0]).map((key) => ({
+    header: formatHeader(key),
+    key,
+  }));
+  console.log(users, columns);
 
-  res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-  res.setHeader('Content-Disposition', 'attachment; filename=clientes.xlsx')
-  res.send(excelBuffer)
-}
+  const excelBuffer = await generateExcel({ infos: users, columns });
+  console.log(await getUsers());
+
+  res.setHeader(
+    'Content-Type',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  );
+  res.setHeader('Content-Disposition', 'attachment; filename=report.xlsx');
+  res.send(excelBuffer);
+};
