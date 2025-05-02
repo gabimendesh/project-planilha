@@ -1,0 +1,24 @@
+name: Create PR to main from feature branches
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request to main
+        uses: repo-sync/pull-request@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          destination_branch: "main"
+          pr_title: "feat: PR automático de `${{ github.ref_name }}`"
+          pr_body: |
+            ### 📦 PR Automático
+            - Branch: `${{ github.ref_name }}`
+            - Último commit: `${{ github.event.head_commit.message }}`
